@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.biancheng.c.mapper.ItemMapper">
+    <resultMap id="BaseResultMap" type="net.biancheng.c.entity.Item">
+        <id column="item_id" jdbcType="INTEGER" property="id"/>
+        <result column="item_name" jdbcType="VARCHAR" property="name"/>
+        <result column="item_category" jdbcType="VARCHAR" property="category"/>
+        <result column="item_inlibrary" jdbcType="BOOLEAN" property="isInLibrary"/>
+        <result column="item_price" jdbcType="INTEGER" property="price"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        item_id, item_name, item_category, item_inlibrary, item_price
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from library
+        where item_id = #{itemId,jdbcType=INTEGER}
+    </select>
+    <select id="GetAll" resultType="net.biancheng.c.entity.Item">
+        select *
+        from library;
+    </select>
+
+<!--    <insert id="addNewMember" >-->
+<!--        INSERT INTO dept (dept_no,dept_name,db_source)-->
+<!--        values (#{dept_No},#{dept_Name},#{dbSource})-->
+<!--    </insert>-->
+</mapper>
