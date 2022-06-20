@@ -24,10 +24,8 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.GetAll();
     }
 
-//    @Override
-//    public void addNewMember(Integer deptNo, String deptName, String dbSource) {
-//        deptMapper.addNewMember(deptNo, deptName, dbSource);
-//    }
-
-
+    @Override
+    public Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price) {
+        return itemMapper.addNewItem(id, category, isInLibrary, name, price);
+    }
 }

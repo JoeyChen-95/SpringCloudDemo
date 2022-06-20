@@ -11,6 +11,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+//http://localhost:8002/swagger-ui.html#/
 @Configuration
 @EnableSwagger2 //开启Swagger2
 public class Swagger2 {
@@ -30,8 +31,8 @@ public class Swagger2 {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("标题")
-                .description("api接口文档")
+                .title("Library's Item Service")
+                .description("Api doc")
                 .version("1.0") //版本
                 .build();
     }

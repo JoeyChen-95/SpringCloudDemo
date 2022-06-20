@@ -10,6 +10,6 @@ public interface ItemService {
 
     List<Item> selectAll();
 
-//    void addNewMember(Integer deptNo, String deptName, String dbSource);
+    Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price);
 
 }

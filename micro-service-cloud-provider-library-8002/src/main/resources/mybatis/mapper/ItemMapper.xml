@@ -19,13 +19,13 @@
         from library
         where item_id = #{itemId,jdbcType=INTEGER}
     </select>
-    <select id="GetAll" resultType="net.biancheng.c.entity.Item">
+    <select id="GetAll" resultMap="BaseResultMap">
         select *
         from library;
     </select>
 
-<!--    <insert id="addNewMember" >-->
-<!--        INSERT INTO dept (dept_no,dept_name,db_source)-->
-<!--        values (#{dept_No},#{dept_Name},#{dbSource})-->
-<!--    </insert>-->
+    <insert id="addNewItem" >
+        INSERT INTO library (item_id,item_name,item_category,item_inlibrary,item_price)
+        values (#{id},#{name},#{category},#{isInLibrary},#{price})
+    </insert>
 </mapper>

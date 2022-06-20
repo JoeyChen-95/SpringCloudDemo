@@ -1,6 +1,7 @@
 package net.biancheng.c.controller;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import net.biancheng.c.entity.Item;
 import net.biancheng.c.service.ItemService;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @Slf4j
+@RequestMapping("/items")
 public class ItemController {
     @Autowired
     private ItemService itemService;
@@ -24,21 +26,21 @@ public class ItemController {
     @Value("${server.port}")
     private String serverPort;
 
-    @ApiOperation(value="people's id",notes = "根据deptNo获取人")
-    @RequestMapping(value = "/item/get/{itemid}", method = RequestMethod.GET)
+    @ApiOperation(value="Find item by its id",notes = "Find item by its id")
+    @GetMapping(value = "/get/{itemid}")
     public Item get(@PathVariable("itemid") int itemId) {
         return itemService.get(itemId);
     }
 
-
-    @RequestMapping(value = "/item/itemlist", method = RequestMethod.GET)
+    @ApiOperation(value="Display all items in the library",notes = "Display all items in the library")
+    @GetMapping(value = "/all")
     public List<Item> list() {
         return itemService.selectAll();
     }
 
-//    @RequestMapping(value = "/dept/add", method = RequestMethod.POST)
-//    public void addNewMember(Integer deptNo, String deptName, String dbSource) {
-//        deptService.addNewMember(deptNo, deptName, dbSource);
-//    }
+    @PostMapping(value = "/createItem")
+    public void addNewMember(Integer itemId, String itemCategory, boolean isInLibrary, String itemName, Integer itemPrice) {
+        itemService.addNewItem(itemId, itemCategory, isInLibrary, itemName, itemPrice);
+    }
 
 }

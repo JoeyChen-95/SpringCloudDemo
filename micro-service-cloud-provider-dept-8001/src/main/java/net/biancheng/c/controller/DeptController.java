@@ -24,18 +24,18 @@ public class DeptController {
     @Value("${server.port}")
     private String serverPort;
 
-    @ApiOperation(value="people's id",notes = "根据deptNo获取人")
+    @ApiOperation(value="people's id",notes = "Find a member by its deptNo")
     @RequestMapping(value = "/dept/get/{id}", method = RequestMethod.GET)
     public Dept get(@PathVariable("id") int id) {
         return deptService.get(id);
     }
 
-
+    @ApiOperation(value = "list all members",notes = "Display all s")
     @RequestMapping(value = "/dept/list", method = RequestMethod.GET)
     public List<Dept> list() {
         return deptService.selectAll();
     }
-
+    @ApiOperation(value="add new member",notes = "Add a new member by inputting deptNo, deptName and dbSource")
     @RequestMapping(value = "/dept/add", method = RequestMethod.POST)
     public void addNewMember(Integer deptNo, String deptName, String dbSource) {
         deptService.addNewMember(deptNo, deptName, dbSource);

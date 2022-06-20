@@ -13,6 +13,6 @@ public interface ItemMapper {
     //获取表中的全部数据
     List<Item> GetAll();
 
-//    boolean addNewMember(Integer dept_No, String dept_Name, String dbSource);
+    Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price);
 
 }
