@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.biancheng.c.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="net.biancheng.c.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="realName" jdbcType="VARCHAR" property="realName"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="accountCredit" jdbcType="INTEGER" property="accountCredit"/>
+        <result column="accountLevel" jdbcType="INTEGER" property="accountLevel"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        , username, password, realname, address, email,accountCredit,accountLevel
+    </sql>
+
+    <select id="findUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <select id="getAllUser" resultMap="BaseResultMap">
+        select *
+        from user;
+    </select>
+
+    <insert id="addNewUser">
+        INSERT INTO user (id, username, password, realName, address, email, accountCredit, accountLevel)
+        values (#{id}, #{username}, #{password}, #{realName}, #{address}, #{email}, #{accountCredit}, #{accountLevel})
+    </insert>
+
+
+</mapper>

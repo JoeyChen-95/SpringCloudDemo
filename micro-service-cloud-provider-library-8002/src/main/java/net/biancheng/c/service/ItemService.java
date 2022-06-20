@@ -1,5 +1,6 @@
 package net.biancheng.c.service;
 
+import net.biancheng.c.dto.ItemDTO;
 import net.biancheng.c.entity.Item;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface ItemService {
 
     List<Item> selectAll();
 
-    Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price);
+    void addNewItem(ItemDTO itemDTO);
 
     void removeItem(Integer id);
 

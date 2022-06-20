@@ -11,6 +11,7 @@
         <module>micro-service-cloud-eureka-7002</module>
         <module>micro-service-cloud-eureka-7003</module>
         <module>micro-service-cloud-provider-library-8002</module>
+        <module>micro-service-cloud-provider-user-8003</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

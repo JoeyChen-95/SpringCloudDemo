@@ -1,5 +1,6 @@
 package net.biancheng.c.service.Impl;
 
+import net.biancheng.c.dto.ItemDTO;
 import net.biancheng.c.entity.Item;
 import net.biancheng.c.mapper.ItemMapper;
 import net.biancheng.c.service.ItemService;
@@ -25,8 +26,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price) {
-        return itemMapper.addNewItem(id, category, isInLibrary, name, price);
+    public void addNewItem(ItemDTO itemDTO) {
+        itemMapper.addNewItem(itemDTO.getId(), itemDTO.getCategory(), itemDTO.getIsInLibrary(), itemDTO.getName(), itemDTO.getPrice());
     }
 
     @Override

@@ -3,6 +3,7 @@ package net.biancheng.c.controller;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import net.biancheng.c.dto.ItemDTO;
 import net.biancheng.c.entity.Item;
 import net.biancheng.c.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,20 @@ public class ItemController {
     }
 
     @ApiOperation(value="Display all items in the library",notes = "Display all items in the library")
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/itemList")
     public List<Item> list() {
         return itemService.selectAll();
     }
 
     @PostMapping(value = "/createItem")
     public void addNewMember(Integer itemId, String itemCategory, boolean isInLibrary, String itemName, Integer itemPrice) {
-        itemService.addNewItem(itemId, itemCategory, isInLibrary, itemName, itemPrice);
+        ItemDTO itemDTO=new ItemDTO();
+        itemDTO.setId(itemId);
+        itemDTO.setCategory(itemCategory);
+        itemDTO.setIsInLibrary(isInLibrary);
+        itemDTO.setName(itemName);
+        itemDTO.setPrice(itemPrice);
+        itemService.addNewItem(itemDTO);
     }
 
     @DeleteMapping(value = "/removeItem")
