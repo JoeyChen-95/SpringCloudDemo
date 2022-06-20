@@ -28,4 +28,21 @@
         INSERT INTO library (item_id,item_name,item_category,item_inlibrary,item_price)
         values (#{id},#{name},#{category},#{isInLibrary},#{price})
     </insert>
+
+    <delete id="removeItem">
+        delete from library where item_id = #{id}
+    </delete>
+
+    <update id="updateItemName">
+        update library
+        set item_name=#{newName}
+        where item_id=#{id}
+    </update>
+
+    <update id="updateItemPrice">
+        update library
+        set item_price=#{newPrice}
+        where item_id=#{id}
+    </update>
+
 </mapper>

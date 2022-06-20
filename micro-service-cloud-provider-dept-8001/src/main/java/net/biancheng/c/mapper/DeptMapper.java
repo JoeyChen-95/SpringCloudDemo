@@ -13,6 +13,10 @@ public interface DeptMapper {
     //获取表中的全部数据
     List<Dept> GetAll();
 
-    boolean addNewMember(Integer dept_No, String dept_Name, String dbSource);
+    void addNewMember(Integer dept_No, String dept_Name, String dbSource);
+
+
+
+
 
 }

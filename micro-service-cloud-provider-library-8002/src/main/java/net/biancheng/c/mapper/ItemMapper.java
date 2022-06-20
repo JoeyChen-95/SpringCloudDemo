@@ -15,4 +15,12 @@ public interface ItemMapper {
 
     Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price);
 
+    void removeItem(Integer id);
+
+    void updateItemName(Integer id, String newName);
+
+    void updateItemPrice(Integer id, Integer newPrice);
+
+
+
 }

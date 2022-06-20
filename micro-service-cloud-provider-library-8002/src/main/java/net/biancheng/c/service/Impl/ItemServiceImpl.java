@@ -28,4 +28,21 @@ public class ItemServiceImpl implements ItemService {
     public Integer addNewItem(Integer id, String category, boolean isInLibrary, String name, Integer price) {
         return itemMapper.addNewItem(id, category, isInLibrary, name, price);
     }
+
+    @Override
+    public void removeItem(Integer id) {
+        itemMapper.removeItem(id);
+
+    }
+
+    @Override
+    public void updateItemName(Integer id, String newName) {
+        itemMapper.updateItemName(id,newName);
+
+    }
+
+    @Override
+    public void updateItemPrice(Integer id, Integer newPrice) {
+        itemMapper.updateItemPrice(id,newPrice);
+    }
 }

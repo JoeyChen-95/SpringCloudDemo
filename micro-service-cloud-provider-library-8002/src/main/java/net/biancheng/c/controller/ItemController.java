@@ -43,4 +43,18 @@ public class ItemController {
         itemService.addNewItem(itemId, itemCategory, isInLibrary, itemName, itemPrice);
     }
 
+    @DeleteMapping(value = "/removeItem")
+    public void removeItem(Integer itemId){
+        itemService.removeItem(itemId);
+    }
+
+    @PutMapping(value = "updateItemName")
+    public void updateItemName(Integer itemId, String newName){
+        itemService.updateItemName(itemId, newName);
+    }
+    @PutMapping(value = "updateItemPrice")
+    public void updateItemPrice(Integer itemId, Integer newPrice){
+        itemService.updateItemPrice(itemId, newPrice);
+    }
+
 }
