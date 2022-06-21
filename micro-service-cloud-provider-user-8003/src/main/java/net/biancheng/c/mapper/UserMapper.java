@@ -15,7 +15,17 @@ public interface UserMapper {
 
     void addNewUser(Integer id, String username, String password, String realName, String address, String email, Integer accountCredit, Integer accountLevel );
 
+    void removeUser(Integer id);
+    void updatePassword(Integer id, String newPassword);
+    void updateUsername(Integer id, String newUsername);
+    void updateUserAccountCredit(Integer id, Integer newAccountCredit);
+    void updateUserAccountLevel(Integer id, Integer newAccountLevel);
 
+    List<User> findUserByLevel(Integer levelLowerBound, Integer levelUpperBound);
+
+    List<User> searchUserByUsername(String username);
+
+    List<User> getDebtAccounts();
 
 
 }

@@ -27,7 +27,7 @@ public class UserController {
     private String serverPort;
 
     @ApiOperation(value="Find user by his/her id",notes = "Find user by his/her id")
-    @GetMapping(value = "/get/{userId}")
+    @GetMapping(value = "/findUserById/{userId}")
     public User findUserById(@PathVariable("userId") int userId) {
         return userService.findUserById(userId);
     }
@@ -50,6 +50,45 @@ public class UserController {
         userDTO.setEmail(email);
         userService.addNewUser(userDTO);
     }
+
+    @DeleteMapping(value = "/removeUser")
+    public void removeUser(Integer id){
+        userService.removeUser(id);
+    }
+
+    @PutMapping(value = "/updateUsername")
+    public void updateUsername(Integer id, String newUsername){
+        userService.updateUserName(id,newUsername);
+    }
+
+    @PutMapping(value = "/updatePassword")
+    public void updatePassword(Integer id, String newPassword){
+        userService.updatePassword(id, newPassword);
+    }
+    @PutMapping(value = "/updateCredit")
+    public void updateCredit(Integer id, Integer newCredit){
+        userService.updateUserAccountCredit(id, newCredit);
+    }
+    @PutMapping(value = "/updateLevel")
+    public void updateLevel(Integer id, Integer newLevel){
+        userService.updateUserAccountLevel(id,newLevel);
+    }
+
+    @GetMapping(value = "findByLevel")
+    public List<User> findUserByLevel(Integer levelLowerBound, Integer levelUpperBound){
+        return userService.findUserByLevel(levelLowerBound, levelUpperBound);
+    }
+
+    @GetMapping(value = "searchUserByUsername")
+    public List<User> searchUserByUsername(String username){
+        return userService.searchUserByUsername(username);
+    }
+
+    @GetMapping(value = "getDebtAccounts")
+    public List<User> getDebtAccounts(){
+        return userService.getDebtAccounts();
+    }
+
 
 
 }

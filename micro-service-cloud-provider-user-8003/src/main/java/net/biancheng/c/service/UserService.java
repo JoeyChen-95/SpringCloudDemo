@@ -13,5 +13,15 @@ public interface UserService {
     List<User> getAllUser();
 
     void addNewUser(UserDTO userDTO);
+    void removeUser(Integer id);
+    void updatePassword(Integer id, String newPassword);
+    void updateUserName(Integer id, String newUsername);
+    void updateUserAccountCredit(Integer id, Integer newAccountCredit);
+    void updateUserAccountLevel(Integer id, Integer newAccountLevel);
 
+    List<User> findUserByLevel(Integer levelLowerBound, Integer levelUpperBound);
+
+    List<User> searchUserByUsername(String username);
+
+    List<User> getDebtAccounts();
 }

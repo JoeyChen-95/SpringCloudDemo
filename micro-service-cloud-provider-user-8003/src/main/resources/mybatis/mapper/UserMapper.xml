@@ -34,5 +34,48 @@
         values (#{id}, #{username}, #{password}, #{realName}, #{address}, #{email}, #{accountCredit}, #{accountLevel})
     </insert>
 
+    <delete id="removeUser">
+        delete from user where id=#{id}
+    </delete>
+
+    <update id="updatePassword">
+        update user
+        set password=#{newPassword}
+        where id=#{id}
+    </update>
+
+    <update id="updateUsername">
+        update user
+        set username=#{newUsername}
+        where id=#{id}
+    </update>
+
+    <update id="updateUserAccountCredit">
+        update user
+        set accountCredit=#{newAccountCredit}
+        where id=#{id}
+    </update>
+
+    <update id="updateUserAccountLevel">
+        update user
+        set accountLevel=#{newAccountLevel}
+        where id=#{id}
+    </update>
+
+    <select id="findUserByLevel" resultMap="BaseResultMap">
+        select *
+        from user where accountLevel&gt;=#{levelLowerBound} and accountLevel&lt;=#{levelUpperBound}
+    </select>
+
+    <select id="searchUserByUsername" resultMap="BaseResultMap">
+        select *
+        from user where username like concat('%',#{username},'%');
+    </select>
+
+    <select id="getDebtAccounts" resultMap="BaseResultMap">
+        select *
+        from user where accountCredit&lt;0
+    </select>
+
 
 </mapper>

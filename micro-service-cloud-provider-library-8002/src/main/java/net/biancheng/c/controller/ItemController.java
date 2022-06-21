@@ -28,7 +28,7 @@ public class ItemController {
     private String serverPort;
 
     @ApiOperation(value="Find item by its id",notes = "Find item by its id")
-    @GetMapping(value = "/get/{itemid}")
+    @GetMapping(value = "/findItemById/{itemid}")
     public Item get(@PathVariable("itemid") int itemId) {
         return itemService.get(itemId);
     }
