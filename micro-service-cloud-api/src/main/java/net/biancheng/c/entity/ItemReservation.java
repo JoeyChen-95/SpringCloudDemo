@@ -15,4 +15,5 @@ public class ItemReservation {
     private Integer itemId;
     private Timestamp startTime;
     private Timestamp endTime;
+    private Boolean isValid;
 }

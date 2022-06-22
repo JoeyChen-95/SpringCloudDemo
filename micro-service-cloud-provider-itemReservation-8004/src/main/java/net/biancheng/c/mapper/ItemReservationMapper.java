@@ -18,4 +18,13 @@ public interface ItemReservationMapper {
     void reserve(Integer userId, Integer itemId, Timestamp startTime, Timestamp endTime);
 
     void removeReservation(Integer itemReservationId);
+
+    List<ItemReservation> findItemReservationByUser(Integer userId);
+    List<ItemReservation> findItemReservationByItem(Integer itemId);
+
+    void returnItem(Integer itemReservationId);
+
+    void cancelReservation(Integer itemReservationId);
+
+    List<User> findUserByItem(Integer itemId);
 }

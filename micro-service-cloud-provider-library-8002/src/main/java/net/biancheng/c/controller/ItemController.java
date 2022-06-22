@@ -27,20 +27,21 @@ public class ItemController {
     @Value("${server.port}")
     private String serverPort;
 
-    @ApiOperation(value="Find item by its id",notes = "Find item by its id")
+    @ApiOperation(value="Find item by id",notes = "Find item by id")
     @GetMapping(value = "/findItemById/{itemid}")
     public Item get(@PathVariable("itemid") int itemId) {
         return itemService.get(itemId);
     }
 
-    @ApiOperation(value="Display all items in the library",notes = "Display all items in the library")
+    @ApiOperation(value="Display all items",notes = "Display all items")
     @GetMapping(value = "/itemList")
     public List<Item> list() {
         return itemService.selectAll();
     }
 
+    @ApiOperation(value="Add a new item",notes = "Add a new item")
     @PostMapping(value = "/createItem")
-    public void addNewMember(Integer itemId, String itemCategory, boolean isInLibrary, String itemName, Integer itemPrice) {
+    public void addNewItem(Integer itemId, String itemCategory, boolean isInLibrary, String itemName, Integer itemPrice) {
         ItemDTO itemDTO=new ItemDTO();
         itemDTO.setId(itemId);
         itemDTO.setCategory(itemCategory);
@@ -49,16 +50,18 @@ public class ItemController {
         itemDTO.setPrice(itemPrice);
         itemService.addNewItem(itemDTO);
     }
-
+    @ApiOperation(value="remove an item",notes = "remove an item")
     @DeleteMapping(value = "/removeItem")
     public void removeItem(Integer itemId){
         itemService.removeItem(itemId);
     }
 
+    @ApiOperation(value="Update item name",notes = "Update item name")
     @PutMapping(value = "updateItemName")
     public void updateItemName(Integer itemId, String newName){
         itemService.updateItemName(itemId, newName);
     }
+    @ApiOperation(value="Update item price",notes = "Update item price")
     @PutMapping(value = "updateItemPrice")
     public void updateItemPrice(Integer itemId, Integer newPrice){
         itemService.updateItemPrice(itemId, newPrice);

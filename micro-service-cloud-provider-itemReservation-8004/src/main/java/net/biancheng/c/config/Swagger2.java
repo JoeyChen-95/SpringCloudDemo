@@ -34,7 +34,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Library's User Service")
+                .title("Library's ItemReservation Service")
                 .description("Api doc")
                 .version("1.0") //版本
                 .build();

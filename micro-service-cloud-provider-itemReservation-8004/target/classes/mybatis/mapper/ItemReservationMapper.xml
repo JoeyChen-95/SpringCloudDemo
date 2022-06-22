@@ -7,11 +7,23 @@
         <result column="item_id" jdbcType="INTEGER" property="itemId"/>
         <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
         <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="isValid" jdbcType="BOOLEAN" property="isValid"/>
+    </resultMap>
+
+    <resultMap id="UserMap" type="net.biancheng.c.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="realName" jdbcType="VARCHAR" property="realName"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="accountCredit" jdbcType="INTEGER" property="accountCredit"/>
+        <result column="accountLevel" jdbcType="INTEGER" property="accountLevel"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         itemReservation_id
-        , user_id, item_id, start_time, end_time
+        , user_id, item_id, start_time, end_time, isValid
     </sql>
 
     <select id="findItemReservationById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -33,6 +45,29 @@
     <delete id="removeReservation">
         delete from itemReservation where itemReservation_id = #{itemReservationId}
     </delete>
+
+    <select id="findItemReservationByUser" resultMap="BaseResultMap">
+        select *
+        from itemReservation where user_id = #{userId}
+    </select>
+
+    <select id="findItemReservationByItem" resultMap="BaseResultMap">
+        select *
+        from itemReservation where item_id = #{itemId}
+    </select>
+
+    <update id="returnItem">
+        update itemReservation set isValid = false, end_time=now() where itemReservation_id = #{itemReservationId}
+    </update>
+
+    <update id="cancelReservation">
+        update itemReservation set isValid = false, end_time=start_time where itemReservation_id = #{itemReservationId}
+    </update>
+
+    <select id="findUserByItem" resultMap="UserMap">
+        select u.*
+        from itemReservation ir, user u where u.id=ir.user_id and ir.item_id=#{itemId} group by u.id
+    </select>
 
 
 </mapper>
